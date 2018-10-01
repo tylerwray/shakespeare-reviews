@@ -1,14 +1,37 @@
 {
   "dependencies": {
+    "axios": "^0.18.0",
+    "eslint": "^5.6.1",
+    "husky": "^1.0.1",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "react-testing-library": "^5.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test -- --coverage"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "name": "shakespeare-reviews",
   "private": true,
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
+    "lint": "eslint .",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },
