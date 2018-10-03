@@ -11,6 +11,11 @@ import FiveStars from './FiveStars'
 
 function styles(theme) {
   return {
+    root: {
+      maxHeight: 700,
+      overflowY: 'scroll',
+      margin: theme.spacing.unit * 2
+    },
     itemRoot: {
       margin: theme.spacing.unit,
       padding: theme.spacing.unit
@@ -22,14 +27,19 @@ function styles(theme) {
       backgroundColor: theme.palette.primary.extraLight
     },
     progressBar: {
-      backgroundColor: theme.palette.secondary.light
+      backgroundColor: '#E2C6D6'
+    },
+    body: {
+      fontSize: 16,
+      color: theme.palette.text.secondary,
+      paddingBottom: theme.spacing.unit
     }
   }
 }
 
 function Reviews({ classes, reviews }) {
   return (
-    <Card>
+    <Card className={classes.root}>
       <CardContent>
         <Typography>Reviews</Typography>
         {reviews.map(review => (
@@ -57,7 +67,7 @@ function Review({ classes, review }) {
           }}
         />
       ) : (
-        <Typography data-testid="review-body" variant="body2">
+        <Typography data-testid="review-body" className={classes.body}>
           {review.body}
         </Typography>
       )}

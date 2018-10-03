@@ -10,6 +10,7 @@ import { getAllReviews, getSingleReview } from './services'
 import { averageRating } from './helpers'
 import theme from './theme'
 import Layout from './components/Layout'
+import Grid from '@material-ui/core/Grid'
 
 class App extends React.Component {
   state = {
@@ -45,13 +46,19 @@ class App extends React.Component {
     return (
       <MuiThemeProvider theme={theme}>
         <Layout>
-          <AverageRating
-            average={
-              reviews.length && averageRating(reviews.map(x => x.rating))
-            }
-          />
-          <RatingsOverTime reviews={reviews} />
-          <Reviews reviews={reviews} />
+          <Grid container>
+            <Grid item xs={12} md={6}>
+              <AverageRating
+                average={
+                  reviews.length && averageRating(reviews.map(x => x.rating))
+                }
+              />
+              <RatingsOverTime reviews={reviews} />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Reviews reviews={reviews} />
+            </Grid>
+          </Grid>
         </Layout>
       </MuiThemeProvider>
     )

@@ -1,12 +1,21 @@
 import React from 'react'
 
+import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
 import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts'
 
-function RatingsOverTime({ reviews }) {
+function styles(theme) {
+  return {
+    root: {
+      margin: theme.spacing.unit * 2
+    }
+  }
+}
+
+function RatingsOverTime({ classes, reviews }) {
   const displayReviews = reviews.slice(0, 10).reverse()
 
   const data = displayReviews.map(r => {
@@ -19,7 +28,7 @@ function RatingsOverTime({ reviews }) {
   })
 
   return (
-    <Card>
+    <Card className={classes.root}>
       <CardContent>
         <Typography color="textSecondary">Recent Ratings</Typography>
         <AreaChart width={500} height={250} data={data}>
@@ -50,4 +59,4 @@ function RatingsOverTime({ reviews }) {
   )
 }
 
-export default RatingsOverTime
+export default withStyles(styles)(RatingsOverTime)

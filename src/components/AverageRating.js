@@ -6,8 +6,11 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import FiveStars from './FiveStars'
 
-function styles() {
+function styles(theme) {
   return {
+    root: {
+      margin: theme.spacing.unit * 2
+    },
     stars: {
       float: 'right',
       paddingTop: 10
@@ -17,7 +20,7 @@ function styles() {
 
 function AverageRating({ classes, average }) {
   return (
-    <Card>
+    <Card className={classes.root}>
       <CardContent>
         <FiveStars rating={average} className={classes.stars} />
         <Typography className={classes.title} color="textSecondary">
