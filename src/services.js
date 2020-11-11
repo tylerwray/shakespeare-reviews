@@ -3,7 +3,7 @@ import axios from 'axios'
 const TOKEN = 'koOheljmQX'
 
 export async function getAllReviews() {
-  const endpoint = 'http://shakespeare.podium.co/api/reviews'
+  const endpoint = 'https://shakespeare.podium.co/api/reviews'
   const config = {
     headers: {
       Authorization: TOKEN
